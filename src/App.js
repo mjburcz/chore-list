@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import data from "./data.json";
 
-function App() {
+import Header from "./components/Header";
+import ChoreList from "./components/ChoreList";
+
+export default function App() {
+  const [choreList, setChoreList] = useState(data);
+
+  function handleToggle(id, complete) {
+    //find the chore that is being toggled
+    let taskList = [...choreList];
+
+    let index = taskList.findIndex((t) => t.id === id);
+
+    // update chore status
+    taskList[index] = {
+      ...taskList[index],
+      complete: !complete,
+    };
+
+    //replace & set state
+    setChoreList(taskList);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <ChoreList choreList={choreList} handleToggle={handleToggle} />
     </div>
   );
 }
-
-export default App;

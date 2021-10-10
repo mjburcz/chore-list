@@ -2,6 +2,27 @@
   text-align: center;
 }
 
+ul {
+  padding: 0;
+}
+
+.done {
+  text-decoration: line-through;
+  color: #d3d3d3;
+}
+
+.done:hover {
+  cursor: pointer;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.bold:hover {
+  cursor: pointer;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
